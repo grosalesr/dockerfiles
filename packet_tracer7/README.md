@@ -1,6 +1,6 @@
 # Description
 
-This will allow you to run Packet Tracer 7.1.1 from a container that uses Ubuntu 14.04 and uses X11 Forwarding Protocol to display the GUI locally on your machine.
+This will allow you to run Packet Tracer 7.1.1 from a container that uses Ubuntu 14.04 and X11 Forwarding Protocol to display the GUI locally on your machine.
 
 # Requirements
 * Packet Tracer 7.1.1 for Linux 64 bit.tar.gz that you can get from [netacad](https://www.netacad.com/courses/packet-tracer)
@@ -9,13 +9,17 @@ This will allow you to run Packet Tracer 7.1.1 from a container that uses Ubuntu
 
 Use the bash script provided *packetTracer7* or run the followings commands
 
-If you're using any of the Fedora family (RHEL, CentOS, etc) it would be necesary to set SELinux to permissive in runtime.
-* `sudo setenforce 0`
+* If you're using any of the Fedora family (RHEL, CentOS, etc) it would be necesary to set SELinux to permissive in runtime.
+```
+sudo setenforce 0
+```
 
-Enable connections to X server
-* `xhost +`
+* Enable connections to X server
+```
+xhost +
+```
 
-Run the application
+* Run the application
 ```
 docker run --rm -d -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/PT:/root/pt -e DISPLAY=unix$DISPLAY grosales/packettracer7 "$@"
 ```
