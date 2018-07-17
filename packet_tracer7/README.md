@@ -5,6 +5,15 @@ This will allow you to run Packet Tracer 7.1.1 from a container that uses Ubuntu
 # Requirements
 * Packet Tracer 7.1.1 for Linux 64 bit.tar.gz that you can get from [netacad](https://www.netacad.com/courses/packet-tracer)
 
+# Build
+
+* Create a folder
+* Place the Dockerfile, the installer and the script inside the folder
+* Build it using:
+```
+docker build -t grosalesr/packerttracer7 .
+```
+
 # Execution
 
 Use the bash script provided *packetTracer7* or run the followings commands
