@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo setenforce 0
+xhost +
+
 docker run --rm -d \
  	-v /tmp/.X11-unix:/tmp/.X11-unix \
  	-v $HOME/PT:/root/pt \
