@@ -8,7 +8,7 @@ This will allow you to run Packet Tracer 7.1.1 from a container that uses Ubuntu
 # Build
 
 * Create a folder
-* Place the Dockerfile, the installer and the script inside the folder
+* Place the Dockerfile and the installer inside the folder
 * Build it using:
 ```
 docker build -t grosalesr/packerttracer7 .
