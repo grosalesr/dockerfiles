@@ -30,7 +30,7 @@ xhost +SI:localuser:root
 
 * Run the application
 ```
-docker run --rm -d -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/PT:/root/pt -e DISPLAY=unix$DISPLAY grosales/packettracer7 "$@"
+docker run --rm -d -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/PT:/root/pt -e DISPLAY=unix$DISPLAY grosalesr/packettracer7 "$@"
 ```
 
 # Tested
