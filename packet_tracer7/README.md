@@ -40,7 +40,7 @@ docker run --rm -d -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/PT:/root/pt -e DISP
     * When the application starts sometimes it gets displayed as a black window. Resizing the will fix it.
     * It works with the shipped docker version (no need to install docker-ce); just use either `--rm` or `-d` not both.
 
-Thanks to:
+# Thanks to:
 
 * [Jessie Frazelle](https://blog.jessfraz.com/post/docker-containers-on-the-desktop/)
 * [somatorio](https://github.com/somatorio/docker-packet-tracer)
