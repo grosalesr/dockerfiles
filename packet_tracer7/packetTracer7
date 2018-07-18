@@ -1,10 +1,35 @@
 #!/bin/bash
 
-sudo setenforce 0
-xhost +
+#
+# Checks os-release file for 'redhat' string, if it founds it sets SELinux to permissive in runtime
+#
+if [ -f /etc/os-release  ]; then
+	`grep -i redhat /etc/os-release > /dev/null`
+	isFedoraFamily=$?
+	
+	`grep -i redhat /etc/os-release | grep -i fedora > /dev/null`
+	isFedora=$?
+fi
+
+
+if [ "$isFedoraFamily" -eq "0" ]; then
+	SELinuxState=`getenforce`
+
+	if [ "$SELinuxState" == "Enforcing"  ]; then
+		echo -e "In order to run the application, SELinux will be set to permissive\nin runtime mode (Not persistent across reboots)"
+		sudo setenforce 0
+	fi
+
+	if [ "$isFedora" -eq "0" ]; then
+		echo -e "\n\nActivating xhost connections\n\n"
+		xhost +SI:localuser:root
+	fi
+fi
+
 
 docker run --rm -d \
  	-v /tmp/.X11-unix:/tmp/.X11-unix \
  	-v $HOME/PT:/root/pt \
  	-e DISPLAY=unix$DISPLAY \
  	grosales/packettracer7 "$@"
+
