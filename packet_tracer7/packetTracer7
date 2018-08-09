@@ -1,35 +1,17 @@
 #!/bin/bash
 
-#
-# Checks os-release file for 'redhat' string, if it founds it sets SELinux to permissive in runtime
-#
-if [ -f /etc/os-release  ]; then
-	`grep -i redhat /etc/os-release > /dev/null`
-	isFedoraFamily=$?
-	
-	`grep -i redhat /etc/os-release | grep -i fedora > /dev/null`
-	isFedora=$?
+if [ ! -d $HOME/Documents/mGBA ]; then
+    mkdir $HOME/Documents/packetTracer
 fi
 
-
-if [ "$isFedoraFamily" -eq "0" ]; then
-	SELinuxState=`getenforce`
-
-	if [ "$SELinuxState" == "Enforcing"  ]; then
-		echo -e "In order to run the application, SELinux will be set to permissive\nin runtime mode (Not persistent across reboots)"
-		sudo setenforce 0
-	fi
-
-	if [ "$isFedora" -eq "0" ]; then
-		echo -e "\n\nActivating xhost connections\n\n"
-		xhost +SI:localuser:root
-	fi
-fi
-
-
+# For RHEL remove '-d' flag
 docker run --rm -d \
- 	-v /tmp/.X11-unix:/tmp/.X11-unix \
- 	-v $HOME/PT:/root/pt \
+        --user="$(id -u):$(id -g)" \
+        -v /etc/group:/etc/group:ro \
+        -v /etc/shadow:/etc/shadow:ro \
+        -v /etc/sudoers.d:/etc/sudoers.d:ro \
+ 	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+ 	-v $HOME/Documents/packetTracer:/tmp \
  	-e DISPLAY=unix$DISPLAY \
- 	grosalesr/packettracer7 "$@"
+ 	grosalesr/packettracer7
 

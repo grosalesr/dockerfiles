@@ -23,5 +23,5 @@ RUN mkdir -p /opt/pt && \
     sh /opt/pt/set_qtenv.sh && \
     rm -f /root/pt.tar.gz 
 
-    
+WORKDIR /tmp    
 ENTRYPOINT [ "/opt/pt/packettracer" ]

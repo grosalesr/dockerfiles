@@ -16,28 +16,30 @@ docker build -t grosalesr/packerttracer7 .
 
 # Execution
 
-Use the bash script provided **packetTracer7** or run the followings commands:
+You can execute the application using:
 
-* If you're using any of the Fedora family (RHEL, CentOS, etc) and SELinux is in Enforcing mode, it would be necessary set it to permissive in runtime.
+1. The bash script provided **packetTracer7** or 
+
+1. Executing `docker run` as follows:
 ```
-sudo setenforce 0
+docker run --rm -d \
+        --user="$(id -u):$(id -g)" \
+        -v /etc/group:/etc/group:ro \
+        -v /etc/shadow:/etc/shadow:ro \
+        -v /etc/sudoers.d:/etc/sudoers.d:ro \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+        -v $HOME/Documents/packetTracer:/tmp \
+        -e DISPLAY=unix$DISPLAY \
+        grosalesr/packettracer7
 ```
 
-* Enable connections to X server for the root user
-```
-xhost +SI:localuser:root
-```
-
-* Run the application
-```
-docker run --rm -d -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/PT:/root/pt -e DISPLAY=unix$DISPLAY grosalesr/packettracer7 "$@"
-```
+The `--user` and mounted volumes(group, shadow and sudoers.d) are required to ensure the access to the X server is only for the application user, see `man xhost`.
 
 # Tested
 
 * Fedora 28
 * RHEL 7
-    * When the application starts sometimes it gets displayed as a black window. Resizing the will fix it.
+    * When the application starts sometimes it's displayed as a black window. Resizing the will fix it.
     * It works with the shipped docker version (no need to install docker-ce); just use either `--rm` or `-d` not both.
 
 # Thanks to:
