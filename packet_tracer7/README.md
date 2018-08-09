@@ -33,7 +33,10 @@ docker run --rm -d \
         grosalesr/packettracer7
 ```
 
-The `--user` and mounted volumes(group, shadow and sudoers.d) are required to ensure the access to the X server is only for the application user, see `man xhost`.
+**ATTENTION**: The command above mounts hosts folder `$HOME/Documents/packetTracer` folder to containers `/tmp`. Be sure to modify this to meet your needs.
+
+
+**Security**: The `--user` and mounted volumes(group, shadow and sudoers.d) are required to ensure the access to the X server is only for the application user, see `man xhost`.
 
 # Tested
 
