@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# folder created to store roms, saves, etc
+if [ ! -d $HOME/Documents/mGBA ]; then
+    mkdir $HOME/Documents/mGBA
+fi
+
+docker run --rm -d \
+        --user="$(id -u):$(id -g)" \
+	--device /dev/dri \
+        --ipc host \
+        -v /etc/group:/etc/group:ro \
+        -v /etc/passwd:/etc/passwd:ro \
+        -v /etc/shadow:/etc/shadow:ro \
+        -v /etc/sudoers.d/:/etc/sudoers.d:ro \
+ 	-v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+        -v $HOME/Documents/mGBA:/tmp/$(id -u) \
+        -e XDG_RUNTIME_DIR=/tmp/$(id -u) \
+ 	-e DISPLAY=unix$DISPLAY \
+ 	grosalesr/mgba "@"
+
