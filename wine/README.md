@@ -29,5 +29,5 @@ docker run --rm -d \
         -v /etc/sudoers.d/:/etc/sudoers.d:ro \
         -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
         -e DISPLAY=unix$DISPLAY \
-        grosalesr/msoffice
+        grosalesr/wine
 ```
