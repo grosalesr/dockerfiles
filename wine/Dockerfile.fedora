@@ -1,0 +1,7 @@
+FROM fedora:latest
+LABEL maintainer="Gerardo Rosales"
+
+ENV WINEARCH=win32
+
+RUN dnf install -y wine.i686 winetricks && \
+    dnf clean all
