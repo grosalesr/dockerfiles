@@ -57,7 +57,7 @@ docker run --rm -it \
 
 # Now what?
 
-Congrats, you're inside the container but it doesn't look that exiting right?
+Congrats, you're inside the container but it doesn't look that exciting right?
 
 ## Creating bottles
 
