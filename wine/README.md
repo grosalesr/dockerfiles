@@ -17,7 +17,7 @@ This process involves:
 * Place the Dockerfile and the installer inside the folder
 * Build it using:
 ```
-docker build -t grosalesr/wine<ubuntu|fedora> -f Dockerfile.<ubuntu|fedora>
+<docker|podman> build -t grosalesr/wine<ubuntu|fedora> -f Dockerfile.<ubuntu|fedora>
 ```
 
 # Execution
