@@ -59,6 +59,13 @@ docker run --rm -it \
 
 Congrats, you're inside the container but it doesn't look that exciting right?
 
+1.We are mounting our Downloads folder into mnt folder inside the container, therefore we should place our windows binaries there(in our Downloads folder) or change the mounted path to one that suits you better.
+1. Go to the mnt folder inside the container and look for your windows binary
+1. The easiest/fastest way to test is just run `wine <Your Binary>`, wine will create the bottle and try to execute the application.
+
+If the above didn't work, then you must configured wine bottles as explained below
+
+
 ## Creating bottles
 
 ## Winetricks
