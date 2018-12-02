@@ -59,7 +59,7 @@ docker run --rm -it \
 
 Congrats, you're inside the container but it doesn't look that exciting right?
 
-1.We are mounting our Downloads folder into mnt folder inside the container, therefore we should place our windows binaries there(in our Downloads folder) or change the mounted path to one that suits you better.
+1. We are mounting our Downloads folder into mnt folder inside the container, therefore we should place our windows binaries there(in our Downloads folder) or change the mounted path to one that suits you better.
 
 1. Go to the mnt folder inside the container and look for your windows binary
 
