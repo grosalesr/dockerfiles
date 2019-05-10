@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+# http://man7.org/linux/man-pages/man1/tmux.1.html
+tmux new-session -s "cloudWork" -d
+tmux split-window -h
+tmux split-window -v
+tmux select-pane -U
+tmux resize-pane -U 25
+tmux send-key 'watch -n 10 MotionPro -a' Enter
+tmux split-window -h
+tmux send-key 'MotionPro' Enter
+tmux select-pane -t 3
+tmux send-key 'clear' Enter
+tmux select-pane -t 0
+tmux -2 attach-session -d 
