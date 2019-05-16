@@ -7,6 +7,7 @@ RUN yum install -y \
     freerdp \
     firefox \
     dbus-x11 \
+    dnssec-trigger \
     NetworkManager \
     openssh-clients \
     mesa-dri-drivers
