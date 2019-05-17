@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d $HOME/Documents/mGBA ]; then
+if [ ! -d $HOME/Documents/packetTracer ]; then
     mkdir $HOME/Documents/packetTracer
 fi
 
